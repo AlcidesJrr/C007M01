@@ -10,10 +10,12 @@ const prompt = require('prompt-sync')({ sigint: true });
 // let gol = []
 // for (i = 0; i < aprov.partidas; i++){
 //     let qntGols = {
-//         gols: gols = prompt(`Quantos gols fez na ${i + 1}º partida? `)
 //     }
+//     qntGols.gols = prompt(`Quantos gols fez na ${i + 1}º partida? `)
 //     gol.push(qntGols.gols)
 // }
+
+
 
 // console.log(gol)
 
@@ -81,11 +83,71 @@ const prompt = require('prompt-sync')({ sigint: true });
 // D) Uma lista com as idades que estão acima da média.
 // OBS: O programa deve garantir que quando perguntar ao usuário se deseja continuar a resposta seja somente S ou N. 
 
-let cadastro = [];
+var cadastro = [];
 
-function perguntas() {
-    
+function  perg() {
+lista = {}
+lista.nome = (prompt('Digite seu nome: '));
+lista.genero = (prompt('Digite seu genero: ').toLowerCase());
+lista.idade = parseInt((+prompt('Digite sua idade: ')));
+console.log();
+cadastro.push(lista);
+
+quest();
+  
 }
+
+function quest() {
+
+  let conti = prompt('Fazer novo cadastro? [S/N] ');
+
+  if ((conti.toUpperCase()) === 'S') {
+    perg();
+  }
+  else if ((conti.toUpperCase()) === 'N') {
+    resultado();
+  }
+  else {
+    console.log('Digite uma opção válida.')
+    quest();
+  }
+
+}
+
+console.log();
+
+function resultado() {
+  
+  console.log('Cadastro Geral');
+  console.log();
+
+  console.log(`A um total de ${cadastro.length} pessoas cadastradas nesta lista.`);
+
+  var total = cadastro.reduce(getTotal, 0);
+  function getTotal(total, item) {
+    return total + (item.idade / cadastro.length)
+  }
+
+  console.log(`A média de idade é de ${total.toFixed(0)} anos.`);
+  console.log()
+  
+  console.log('Lista das pessoas do genero feminino');
+
+  const newlist = cadastro.filter((user, index, array) => user.genero === 'feminino');
+
+  console.log(newlist)
+  console.log()
+
+  console.log('Pessoas com idade acima da média');
+
+  const newlistaidade = cadastro.filter((user, index, array) => user.idade > total);
+
+  console.log(newlistaidade)
+}
+
+
+perg()
+
 
 
 
