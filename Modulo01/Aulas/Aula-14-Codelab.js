@@ -9,16 +9,27 @@ const prompt = require('prompt-sync')({ sigint: true });
 
 // let gol = []
 // for (i = 0; i < aprov.partidas; i++){
-//     let qntGols = {
-//     }
-//     qntGols.gols = prompt(`Quantos gols fez na ${i + 1}º partida? `)
-//     gol.push(qntGols.gols)
+//   let qntGols = {
+//   }
+//   qntGols.gols = +prompt(`Quantos gols fez na ${i + 1}º partida? `)
+//   gol.push(qntGols.gols)
 // }
 
+// aprov.gols = gol
 
+// function somar() {
+//   let soma = 0;
+//   for (let i in gol) {
+//     soma += gol[i];
+//   }
+//   return soma 
+// }
 
-// console.log(gol)
+// aprov.total = somar()
 
+// console.log(aprov)
+
+// node Aula-14-Codelab
 
 //-----------------------------------------------------------
 
@@ -83,70 +94,70 @@ const prompt = require('prompt-sync')({ sigint: true });
 // D) Uma lista com as idades que estão acima da média.
 // OBS: O programa deve garantir que quando perguntar ao usuário se deseja continuar a resposta seja somente S ou N. 
 
-var cadastro = [];
+// var cadastro = [];
 
-function  perg() {
-lista = {}
-lista.nome = (prompt('Digite seu nome: '));
-lista.genero = (prompt('Digite seu genero: ').toLowerCase());
-lista.idade = parseInt((+prompt('Digite sua idade: ')));
-console.log();
-cadastro.push(lista);
+// function  perg() {
+// lista = {}
+// lista.nome = (prompt('Digite seu nome: '));
+// lista.genero = (prompt('Digite seu genero: ').toLowerCase());
+// lista.idade = parseInt((+prompt('Digite sua idade: ')));
+// console.log();
+// cadastro.push(lista);
 
-quest();
+// quest();
   
-}
+// }
 
-function quest() {
+// function quest() {
 
-  let conti = prompt('Fazer novo cadastro? [S/N] ');
+//   let conti = prompt('Fazer novo cadastro? [S/N] ');
 
-  if ((conti.toUpperCase()) === 'S') {
-    perg();
-  }
-  else if ((conti.toUpperCase()) === 'N') {
-    resultado();
-  }
-  else {
-    console.log('Digite uma opção válida.')
-    quest();
-  }
+//   if ((conti.toUpperCase()) === 'S') {
+//     perg();
+//   }
+//   else if ((conti.toUpperCase()) === 'N') {
+//     resultado();
+//   }
+//   else {
+//     console.log('Digite uma opção válida.')
+//     quest();
+//   }
 
-}
+// }
 
-console.log();
+// console.log();
 
-function resultado() {
+// function resultado() {
   
-  console.log('Cadastro Geral');
-  console.log();
+//   console.log('Cadastro Geral');
+//   console.log();
 
-  console.log(`A um total de ${cadastro.length} pessoas cadastradas nesta lista.`);
+//   console.log(`A um total de ${cadastro.length} pessoas cadastradas nesta lista.`);
 
-  var total = cadastro.reduce(getTotal, 0);
-  function getTotal(total, item) {
-    return total + (item.idade / cadastro.length)
-  }
+//   var total = cadastro.reduce(getTotal, 0);
+//   function getTotal(total, item) {
+//     return total + (item.idade / cadastro.length)
+//   }
 
-  console.log(`A média de idade é de ${total.toFixed(0)} anos.`);
-  console.log()
+//   console.log(`A média de idade é de ${total.toFixed(0)} anos.`);
+//   console.log()
   
-  console.log('Lista das pessoas do genero feminino');
+//   console.log('Lista das pessoas do genero feminino');
 
-  const newlist = cadastro.filter((user, index, array) => user.genero === 'feminino');
+//   const newlist = cadastro.filter((user, index, array) => user.genero === 'feminino');
 
-  console.log(newlist)
-  console.log()
+//   console.log(newlist)
+//   console.log()
 
-  console.log('Pessoas com idade acima da média');
+//   console.log('Pessoas com idade acima da média');
 
-  const newlistaidade = cadastro.filter((user, index, array) => user.idade > total);
+//   const newlistaidade = cadastro.filter((user, index, array) => user.idade > total);
 
-  console.log(newlistaidade)
-}
+//   console.log(newlistaidade)
+// }
 
 
-perg()
+// perg()
 
 
 
