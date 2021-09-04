@@ -104,7 +104,7 @@ function inicio() {
     }
   resultado()
 }
-
+    
 
 
 function resultado(result) {
