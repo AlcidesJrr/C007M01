@@ -3,22 +3,6 @@ const prompt = require('prompt-sync')({ sigint: true });
 // AULA 14 – CODELAB
 // EXERCICIO 1 - Crie um programa que gerencie o aproveitamento de um jogador de futebol. O programa vai ler o nome do jogador e quantas partidas ele jogou. Depois vai ler a quantidade de gols feitos em cada partida. No final, tudo isso será guardado em um objeto, incluindo o total de gols feitos durante o campeonato.  
 
-// aprov = {}
-// aprov.nome = prompt('Digite seu nome: ');
-// aprov.partidas = prompt('Quantas partidas jogou?: ');
-
-// let gol = []
-// for (i = 0; i < aprov.partidas; i++){
-//     let qntGols = {
-//     }
-//     qntGols.gols = prompt(`Quantos gols fez na ${i + 1}º partida? `)
-//     gol.push(qntGols.gols)
-// }
-
-
-
-// console.log(gol)
-
 
 //-----------------------------------------------------------
 
