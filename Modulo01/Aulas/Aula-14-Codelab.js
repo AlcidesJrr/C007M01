@@ -29,8 +29,6 @@ const prompt = require('prompt-sync')({ sigint: true });
 
 // console.log(aprov)
 
-// node Aula-14-Codelab
-
 //-----------------------------------------------------------
 
 
