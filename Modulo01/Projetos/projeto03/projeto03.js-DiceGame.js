@@ -94,7 +94,7 @@ function main() {
         rodLista.push(rod)
 }
 
-  
+
 function inicio() {
     for (j = 0; j < rodadas; j++) {
         main();
