@@ -1,25 +1,25 @@
 const prompt = require('prompt-sync')();
 
-// let lista1 = ['alcides', 36, "joinville", true];
+let lista1 = ['alcides', 36, "joinville", true];
 
-// console.log(lista1);
-// console.log((lista1[2]));
-// console.log(lista1.length);
+console.log(lista1);
+console.log((lista1[2]));
+console.log(lista1.length);
 
-// // Push adiciona um elemenbto no final da lista
+// Push adiciona um elemenbto no final da lista
 
-// lista1.push('c7');
-// console.log(lista1);
-// console.log(lista1.length);
+lista1.push('c7');
+console.log(lista1);
+console.log(lista1.length);
 
-// // Adicionando uma lista dentro de outra lista
+// Adicionando uma lista dentro de outra lista
 
-// let novovalor = ['novapalavra', 25]
-// lista1.push(novovalor);
-// console.log(lista1);
-// console.log(lista1.length);
+let novovalor = ['novapalavra', 25]
+lista1.push(novovalor);
+console.log(lista1);
+console.log(lista1.length);
 
-// console.log(lista1[5][0]);
+console.log(lista1[5][0]);
 
 // // Pop remove o elemento do final da lista, além de remover ele retorna o conteúdo  removido. 
 
