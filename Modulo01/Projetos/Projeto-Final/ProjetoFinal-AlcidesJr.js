@@ -142,7 +142,6 @@ class Despesas{
     subGasolina(gastoGasolina) {
         this.gasolina -= gastoGasolina
     }
-
     _gasolina() {
         return this.gasolina
     }
@@ -154,9 +153,11 @@ class Despesas{
     _cafe() {
         if (this.dinheiro < 15) {
             console.log(`[${_hora.relogio()}] - Você tem R$ ${this.dinheiro.toFixed(2)} em sua conta e o café custa R$ 15,00.`)
+            _hora.relogioAvanca(5);
         } else if (this.dinheiro> 15) {
             console.log(`[${_hora.relogio()}] - Café tomado!! O café custou R$ 15,00.`);
             _despesas.gastos(0, 15);
+            _hora.relogioAvanca(15);
         }
     }
 
@@ -285,13 +286,11 @@ function inicio() {
 
         if (acao == 1) {
             _despesas._cafe();
-            _hora.relogioAvanca(5);
             console.log();
             console.log(_pessoa.dados());
         }
     
         if (acao == 2) {
-            _hora.relogioAvanca(7);
             _despesas.__gasolina();
             console.log();
             console.log(_pessoa.dados());
