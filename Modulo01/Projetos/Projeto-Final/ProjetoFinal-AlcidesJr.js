@@ -197,7 +197,7 @@ function inicio() {
 
         if (acao == 1 && _pessoa.dinheiro < 15) {
             _hora.relogioAvanca(5);
-            console.log(`[${_hora.relogio()}] - Você tem R$ ${_pessoa.dinheiro} em sua conta e o café custa R$ 15,00.`);
+            console.log(`[${_hora.relogio()}] - Você tem R$ ${_pessoa.dinheiro.toFixed(2)} em sua conta e o café custa R$ 15,00.`);
         } else if (acao == 1 && _pessoa.dinheiro > 15) {
             _pessoa.gastos(0, 15);
             _hora.relogioAvanca(5);
