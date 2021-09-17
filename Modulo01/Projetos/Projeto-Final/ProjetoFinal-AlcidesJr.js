@@ -233,7 +233,7 @@ function inicio() {
             escolha();
             
             function escolha() {
-                var vazio = prompt('');
+                var vazio = prompt('> ');
                 if (vazio.toLowerCase() == 's') {
                     noGasolina();
                     function noGasolina() {
