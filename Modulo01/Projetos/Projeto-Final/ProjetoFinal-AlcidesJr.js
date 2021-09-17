@@ -37,31 +37,10 @@ class Dia {
 class Pessoa {
     constructor(nome) {
         this.nome = nome,
-        this.gasolina = 5,
-        this.dinheiro = 0,
-        this.corridas = 0,
-        this.cafe = 0,
-        this.abastece = 0,
         this.fome = true,
         this.cansado = false,
         this.final = false,
         this.limiteHora = false
-    }
-
-    somaCorridas() {
-        this.corridas += 1
-    }
-
-    somaGasolina(litros) {
-        this.gasolina += litros
-    }
-
-    subGasolina(gastoGasolina) {
-        this.gasolina -= gastoGasolina
-    }
-
-    dinheiroCorrida(soma) {
-        this.dinheiro += soma
     }
 
     apresentacao() {
@@ -70,43 +49,35 @@ class Pessoa {
 
     estadoPessoa() {
         if (this.cansado == true) {
-        return `Você trabalhou demais já são ${_hora.relogio()} e você está muito cansado é hora de ir para casa. Você fez ${this.corridas} corridas e terminou o dia com R$ ${this.dinheiro.toFixed(2)}, seu tanque está com ${this.gasolina.toFixed(2)} litros de gasolina.`  
+        return `Você trabalhou demais já são ${_hora.relogio()} e você está muito cansado é hora de ir para casa. Você fez ${_carro._corridas()} corridas e terminou o dia com R$ ${_despesas._dinheiro().toFixed(2)}, seu tanque está com ${_despesas._gasolina().toFixed(2)} litros de gasolina.`  
         } else {
-            return `[${_hora.relogio()}] - Hoje é ${_hora.diaDaSemana()[dia - 1]} você acorda disposto, porém com fome e sai para trabalhar às ${_hora.relogio()} horas. Você tem R$ ${this.dinheiro.toFixed(2)} em sua conta e seu carro tem R$ ${this.gasolina.toFixed(2)} litros de gasolina. Você fez ${this.corridas} corrida(s) no dia. Lembre-se: Seu carro faz 8.5 km/l.`
+            return `Hoje é ${_hora.diaDaSemana()[dia - 1]} você acorda disposto, porém com fome e sai para trabalhar às ${_hora.relogio()} horas. Você tem R$ ${_despesas._dinheiro().toFixed(2)} em sua conta e seu carro tem R$ ${_despesas._gasolina().toFixed(2)} litros de gasolina. Você fez um total de ${_carro._corridas()} corrida(s). Lembre-se: Seu carro faz 8.5 km/l.`
         }
     }
     
     dados() {
         if (this.fome == true) {
-            return `São ${_hora.relogio()} horas. Você está com fome e tem R$ ${this.dinheiro.toFixed(2)} em sua conta e seu carro tem ${this.gasolina.toFixed(2)} litros de gasolina. Você fez ${this.corridas} corrida(s) no dia.`
+            return `São ${_hora.relogio()} horas. Você está com fome e tem R$ ${_despesas._dinheiro().toFixed(2)} em sua conta e seu carro tem ${_despesas._gasolina().toFixed(2)} litros de gasolina. Você fez ${_carro._corridas()} corrida(s) no dia.`
         } else {
-            return `São ${_hora.relogio()} horas. Você está sem fome, tem R$ ${this.dinheiro.toFixed(2)} em sua conta e seu carro tem ${this.gasolina.toFixed(2)} litros de gasolina. Você fez ${this.corridas} corrida(s) no dia.`
+            return `São ${_hora.relogio()} horas. Você está sem fome, tem R$ ${_despesas._dinheiro().toFixed(2)} em sua conta e seu carro tem ${_despesas._gasolina().toFixed(2)} litros de gasolina. Você fez ${_carro._corridas()} corrida(s) no dia.`
         }
     }
 
     fim() {
         if (this.final == true) {
-            return `Você finalizou o jogo às ${_hora.relogio()} com R$ ${this.dinheiro.toFixed(2)} em sua conta e realizou um total de ${this.corridas} corrida(s). `
+            return `Você finalizou o jogo às ${_hora.relogio()} com R$ ${_despesas._dinheiro().toFixed(2)} em sua conta e realizou um total de ${_carro._corridas()} corrida(s). `
         }
     }
 
     finalExpe() {
         if (this.limiteHora == true) {
-            return `Seu expediente chegou ao final já passa das 12 horas. Você está muito cansado é hora de ir para casa. Você fez ${this.corridas} corridas e terminou o dia com R$ ${this.dinheiro.toFixed(2)}, seu tanque está com ${this.gasolina.toFixed(2)} litros de gasolina.`
+            return `Seu expediente chegou ao final já passa das 12 horas. Você está muito cansado é hora de ir para casa. Você fez ${_carro._corridas()} corridas e terminou o dia com R$ ${_despesas._dinheiro().toFixed(2)}, seu tanque está com ${_despesas._gasolina().toFixed(2)} litros de gasolina.`
         }
     }
         
     reset() {
         this.fome = true,
-        this.corridas = 0
         this.cansado = false
-    }
-
-    gastos(abastece, cafe) {
-        this.abastece = abastece,
-        this.cafe = cafe,
-        this.abastecer1 = true,
-        this.dinheiro = this.dinheiro - this.abastece - this.cafe 
     }
 }
 
@@ -130,6 +101,123 @@ class Animal extends Pessoa {
     }
 }
 
+class Carro {
+    constructor() {
+        this.corridas = 0
+    }
+
+    somaCorridas() {
+        this.corridas += 1
+    }
+    
+    _corridas() {
+        return this.corridas
+    }
+}
+
+class Despesas{
+    constructor() {
+        this.dinheiro = 0,
+        this.cafe = 0,
+        this.cafe = true
+        this.gasolina = 5,
+        this.abastece = 0
+    }
+
+    dinheiroCorrida(soma) {
+        this.dinheiro += soma
+    }
+
+    gastos(abastece, cafe, ) {
+        this.abastece = abastece
+        this.cafe = cafe
+        this.abastecer1 = true
+        this.dinheiro = this.dinheiro - this.abastece - this.cafe
+    }
+
+    somaGasolina(litros) {
+        this.gasolina += litros
+    }
+
+    subGasolina(gastoGasolina) {
+        this.gasolina -= gastoGasolina
+    }
+
+    _gasolina() {
+        return this.gasolina
+    }
+
+    _dinheiro() {
+        return   this.dinheiro
+    }
+
+    _cafe() {
+        if (this.dinheiro < 15) {
+            console.log(`[${_hora.relogio()}] - Você tem R$ ${this.dinheiro.toFixed(2)} em sua conta e o café custa R$ 15,00.`)
+        } else if (this.dinheiro> 15) {
+            console.log(`[${_hora.relogio()}] - Café tomado!! O café custou R$ 15,00.`);
+            _despesas.gastos(0, 15);
+        }
+    }
+
+    __gasolina() {
+        if (this.dinheiro < gasolina) {
+            _hora.relogioAvanca(7)
+            console.log(`[${_hora.relogio()}] - Você tem R$ ${this.dinheiro.toFixed(2)} em sua conta. O preço da gasolina está em R$ ${gasolina.toFixed(2)}.`);
+
+        } else if (this.dinheiro > gasolina) {
+            console.log(`A gasolina custa ${gasolina.toFixed(2)} - Quantos Reais você gostaria de abastecer?`)
+            var abastecer = parseFloat(prompt('> '));
+
+            if (abastecer > _despesas.dinheiro) {
+                console.log(`[${_hora.relogio()}]  ** Saldo insuficiente ** Você tem R$ ${_despesas.dinheiro.toFixed(2)} em sua conta. `)
+            }
+            else {
+                var litros = (abastecer / gasolina)
+                _despesas.somaGasolina(litros)
+                _despesas.gastos(abastecer, 0);
+                _hora.relogioAvanca(20);
+                console.log(`[${_hora.relogio()}] - Muito bem você acaba de abastecer ${litros.toFixed(2)} litros de gasolina.`);
+            }
+        }
+    }
+   
+    _corridasCliente() {
+        var sorteio = _corrida.corridaAletoria()
+        console.log(`O trajeto solicitado da corrida é de ${sorteio} km. Aceitar? [S/N]`);
+        escolha();
+        
+        function escolha() {
+            var vazio = prompt('');
+            if (vazio.toLowerCase() == 's') {
+                noGasolina();
+                function noGasolina() {
+                    var soma = (sorteio / litrosKm)
+                    if (soma > _despesas.gasolina) {
+                        _hora.relogioAvanca(7)
+                        console.log(`[${_hora.relogio()}] - *** Você tem ${_despesas.gasolina.toFixed(2)} litros de gasolina *** é necessário R$ ${soma.toFixed(2)} litros para este trajeto. Você precisa abastecer. Você tem ${_despesas.dinheiro.toFixed(2)} em sua conta.`)
+                
+                    } else if (soma < _despesas.gasolina) {
+                        var soma = (sorteio * valorCorrida)
+                        var gastoGasolina = (sorteio / litrosKm)
+                        console.log(`Parabéns você recebeu ${soma.toFixed(2)} pela corrida. `);
+                        console.log();
+                        _carro.somaCorridas();
+                        _despesas.subGasolina(gastoGasolina);
+                        _despesas.dinheiroCorrida(parseFloat(soma));
+                        _hora.relogioAvanca(horasXcorrida * sorteio);
+                        console.log(_pessoa.dados());
+                    }
+                }
+            } else if (vazio.toLowerCase() == 'n') {
+                _hora.relogioAvanca(5)
+                console.log(_pessoa.dados());
+            }
+        }
+    }
+
+}
+
 // Final das class
 
 // Inicio Objetos
@@ -138,6 +226,8 @@ var _hora = new Dia();
 var _pessoa = new Pessoa('Adalberto');
 var _corrida = new Corrida();
 var _animal = new Animal('Thor', 'Rottweiler')
+var _carro = new Carro();
+var _despesas = new Despesas();
 
 // Final dos objetos
 
@@ -147,27 +237,25 @@ var valorCorrida = 1.40; // fator em reais para estipular o preço da corrida pa
 var horasXcorrida = 2; // estima que leva-se 2 minutos para cada km rodado.
 var gasolina = 5.70; // preço da gasolina.
 var litrosKm = 8.5; // autonomia do carro.
-var dia = 1;        // começa o dia da semana na segunda feira.
+var dia = 1;
 
 // Final variáveis
 
 // Inicio das funções
 
-function apresentacao(){
-    _pessoa.apresentacao();
-}
+
+_pessoa.apresentacao();
 
 function resete() {
 _pessoa.reset();
 _hora.resetHora();
-_pessoa.reset();
 console.log();
 console.log(_pessoa.estadoPessoa());
 }
 console.log();
 
+
 function inicio() {
-    
     while (true) {
         if (_hora.limitehora() >= 12) {
             _pessoa.limiteHora = true
@@ -195,69 +283,22 @@ function inicio() {
         let acao = +prompt('Escolha sua ação: ');
         console.log();
 
-        if (acao == 1 && _pessoa.dinheiro < 15) {
+        if (acao == 1) {
+            _despesas._cafe();
             _hora.relogioAvanca(5);
-            console.log(`[${_hora.relogio()}] - Você tem R$ ${_pessoa.dinheiro.toFixed(2)} em sua conta e o café custa R$ 15,00.`);
-        } else if (acao == 1 && _pessoa.dinheiro > 15) {
-            _pessoa.gastos(0, 15);
-            _hora.relogioAvanca(5);
-            console.log(`[${_hora.relogio()}] - Café tomado!! O café custou R$ 15,00.`);
-            _pessoa.fome = false;
+            console.log();
             console.log(_pessoa.dados());
         }
     
-        if (acao == 2 && _pessoa.dinheiro < gasolina) {
-            _hora.relogioAvanca(7)
-            console.log(`[${_hora.relogio()}] - Você tem R$ ${_pessoa.dinheiro} em sua conta. O preço da gasolina está em R$ ${gasolina.toFixed(2)}.`);
-
-        } else if (acao == 2 && _pessoa.dinheiro > gasolina) {
-            console.log(`A gasolina custa ${gasolina.toFixed(2)} - Quantos Reais você gostaria de abastecer?`)
-            abastecer = parseFloat(prompt('> '));
-            
-                if (abastecer > _pessoa.dinheiro) {
-                    console.log(`[${_hora.relogio()}]  ** Saldo insuficiente ** Você tem R$ ${_pessoa.dinheiro.toFixed(2)} em sua conta. `)
-                }
-                else {
-                    litros = abastecer / gasolina;
-                    _pessoa.somaGasolina(litros)
-                    _pessoa.gastos(abastecer, 0);
-                    _hora.relogioAvanca(20);
-                    console.log(`[${_hora.relogio()}] - Muito bem você acaba de abastecer R$ ${litros.toFixed(2)} litros de gasolina.`);
-                    console.log(_pessoa.dados());
-                }
+        if (acao == 2) {
+            _hora.relogioAvanca(7);
+            _despesas.__gasolina();
+            console.log();
+            console.log(_pessoa.dados());
         }
 
         if (acao == 3) {
-            sorteio = _corrida.corridaAletoria()
-            console.log(`O trajeto solicitado da corrida é de ${sorteio} km. Aceitar? [S/N]`);
-            escolha();
-            
-            function escolha() {
-                var vazio = prompt('> ');
-                if (vazio.toLowerCase() == 's') {
-                    noGasolina();
-                    function noGasolina() {
-                        soma = sorteio / litrosKm
-                        if (soma > _pessoa.gasolina) {
-                            _hora.relogioAvanca(7)
-                            console.log(`[${_hora.relogio()}] - *** Você tem ${_pessoa.gasolina.toFixed(2)} litros de gasolina *** é necessário R$ ${soma.toFixed(2)} litros para este trajeto. Você precisa abastecer. Você tem ${_pessoa.dinheiro.toFixed(2)} em sua conta.`)
-                    
-                        } else if (soma < _pessoa.gasolina) {
-                            soma = sorteio * valorCorrida;
-                            gastoGasolina = sorteio / litrosKm; // diminuti a gasolina por km rodado
-                            console.log(`Parabéns você recebeu ${soma.toFixed(2)} pela corrida. `);
-                            _pessoa.somaCorridas();
-                            _pessoa.subGasolina(gastoGasolina);
-                            _pessoa.dinheiroCorrida(parseFloat(soma.toFixed(2)));
-                            _hora.relogioAvanca(horasXcorrida * sorteio); // reologio avança 2 por km rodado
-                            console.log(_pessoa.dados());
-                        }
-                    }
-                } else if (vazio.toLowerCase() == 'n') {
-                    _hora.relogioAvanca(5)
-                    console.log(_pessoa.dados());
-                }
-            }
+            _despesas._corridasCliente();
         }
                     
         if (acao == 4) {
@@ -281,12 +322,13 @@ function inicio() {
             break
         }
     }
+
 }
 
-apresentacao();
 resete();
 inicio();
-
+    
+    
 
 
 
